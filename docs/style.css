@@ -1,0 +1,627 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Cinzel:wght@400;500;600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Graduate&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nanum+Pen+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ranchers&family=Sofia&family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;0,8..60,900;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,700;1,8..60,800;1,8..60,900&family=Special+Elite&display=swap');
+/*
+CSS rules to specify families
+font-family: 'Anton', sans-serif;
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Cinzel', serif;
+font-family: 'EB Garamond', serif;
+font-family: 'Graduate', serif;
+font-family: 'Inter', sans-serif;
+font-family: 'Lexend', sans-serif;
+font-family: 'Merriweather', serif;
+font-family: 'Nanum Pen Script', cursive;
+font-family: 'Poppins', sans-serif;
+font-family: 'Ranchers', sans-serif;
+font-family: 'Sofia', cursive;
+font-family: 'Source Serif 4', serif;
+font-family: 'Special Elite', system-ui;
+*/
+@font-face {
+  font-family: vercetti;
+  src: url(/fonts/Vercetti-Regular.woff);
+}
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding: 50px;
+}
+
+body{
+  height: 100%;
+  font-family: inter,poppins;
+  margin: 0;
+  padding: 0;
+  color: #36312D;
+  background-color: #FFF8F5;
+  transition: background-color 0.5s ease, color 0.5s ease, bottom 0.5s ease;
+  overflow: auto;
+  touch-action: pan-y;
+  user-scalable: none;
+  -ms-touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body.dark-mode {
+    background-color: #1A110A;
+    color: #9F8F86;
+    transition: background-color 0.5s ease, color 0.5s ease, bottom 0.5s ease;
+    /* Add styles for other elements */
+}
+
+
+.navbar {
+  position: fixed;
+  top: -100px; /* Initially hidden above the viewport */
+  width: 100%;
+  background: rgba(254,234,223,0.9); /* Semi-transparent white background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for a subtle lift effect */
+  backdrop-filter: blur(10px); /* Blur effect */
+  transition: top 0.5s ease; /* Animation effect for appearing/disappearing */
+  z-index: 1000;
+  transition: top 0.5s ease-in-out,background-color 0.5s ease, color 0.5s ease;
+}
+body.dark-mode .navbar {
+    background: rgba(30, 30, 30, 0.9); /* Update color for dark mode */
+    color: #fff;
+    transition: top 0.5s ease-in-out,background-color 0.5s ease, color 0.5s ease;/* Adjust text color for dark mode */
+    /* Add other styles for dark mode */
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+}
+
+.logo {
+  margin-left: 15px;
+  font-size: 30px;
+  font-family: inter,poppins;
+  font-weight: 700;
+}
+.logo-mizaan{
+  text-align: center;
+  font-size: 30px;
+  font-family: inter,poppins;
+  font-weight: 700;
+}
+
+.menu-button {
+  cursor: pointer;
+  margin-right: 15px;
+  font-size: 25px;
+}
+
+.material-symbols-rounded {
+  vertical-align: bottom;
+  font-family: inter, poppins;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.material-symbols-outlined {
+  vertical-align: bottom;
+  font-family: inter, poppins;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+.menu {
+  position: fixed;
+  top: 0px; /* Adjust if you have a navbar with a specific height */
+  right: -300px; /* Initial position outside the viewport */
+  height: 100vh; /* 100% of the viewport height */
+  width: 250px;
+  background: rgba(254, 234, 223, 0.9);
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  overflow-y: auto;
+  transition: right 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease; /* Animation effect for sliding in/out */
+  z-index: 999; /* Ensures it stays above other content */
+  padding-top: 50px; /* Adjust based on your navbar height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body.dark-mode .menu {
+  background: rgba(30, 30, 30, 0.9); /* Update color for dark mode */
+  color: #fff;
+  transition: right 0.5s ease-in-out ,background-color 0.5s ease, color 0.5s ease;
+}
+
+.menu-open {
+  right: 0; /* Adjusts position when menu is open */
+}
+
+.menu-content {
+  padding: 15px;
+}
+
+.menu a {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: black;
+  text-decoration: none;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode .menu a {
+  color: #fff;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+.menu a:hover {
+  background-color: #E1CDC4;
+  border-radius: 5px;
+}
+body.dark-mode .menu a:hover{
+  background-color: #544B46
+}
+
+
+.ThemeDL{
+  border-radius: 10px;
+  border-color: black;
+  padding: 15px;
+  background-color: white;
+  color: black;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  font-family: inter, poppins;
+}
+body.dark-mode .ThemeDL{
+  background-color: black;
+  color: white;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+    
+
+/* Style for the theme selector */
+.theme-selector {
+    text-align: center;
+    padding: 10px; /* Slightly reduced padding */ /* Updated margin-top to push it slightly upward */
+}
+
+.theme-selector span {
+    display: block; /* Reduced margin-bottom */
+    font-size: 16px;
+    font-family: inter, poppins;
+    color: #333;
+    /* Modern text color */
+}
+body.dark-mode .theme-selector span{
+  color: #fff;
+}
+
+.theme-selector button {
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333; /* Dark text color for contrast */
+    border: none;
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px 20px;
+    margin: 0px 5px;
+    font-size: 14px;
+    font-family: inter, poppins;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+
+/* Button hover effects */
+.theme-selector button:hover {
+    background-color: #d1d1d1; /* Slightly darker on hover */
+}
+
+/* Active button style */
+.theme-selector button.active {
+    background-color: #007aff; /* iOS blue */
+    color: #fff;
+}
+
+/* Dark mode button styles */
+body.dark-mode .theme-selector button {
+    background-color: #333;
+    color: #f0f0f0;
+}
+
+body.dark-mode .theme-selector button:hover {
+    background-color: #4d4d4d; /* Darker grey on hover */
+}
+
+body.dark-mode .theme-selector button.active {
+    background-color: #0a84ff; /* Brighter blue for dark mode */
+}
+
+.FontSL{
+  border-radius: 10px;
+  border-color: black;
+  padding: 15px;
+  background-color: white;
+  color: black;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  font-family: inter, poppins;
+}
+body.dark-mode .FontSL{
+  background-color: black;
+  color: white;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+/* Style for the theme selector */
+.font-selector {
+    text-align: center;
+    padding: 10px; /* Slightly reduced padding */ /* Updated margin-top to push it slightly upward */
+}
+
+.font-selector span {
+    display: block; /* Reduced margin-bottom */
+    font-size: 16px;
+    font-family: inter, poppins;
+    color: #333;
+    /* Modern text color */
+}
+body.dark-mode .font-selector span{
+  color: #fff;
+}
+
+.font-selector button {
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333; /* Dark text color for contrast */
+    border: none;
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px 20px;
+    margin: 0px 5px;
+    font-size: 14px;
+    font-family: inter, poppins;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+
+/* Button hover effects */
+.font-selector button:hover {
+    background-color: #d1d1d1; /* Slightly darker on hover */
+}
+
+/* Active button style */
+.font-selector button.active {
+    background-color: #007aff; /* iOS blue */
+    color: #fff;
+}
+
+/* Dark mode button styles */
+body.dark-mode .font-selector button {
+    background-color: #333;
+    color: #f0f0f0;
+}
+
+body.dark-mode .font-selector button:hover {
+    background-color: #4d4d4d; /* Darker grey on hover */
+}
+
+body.dark-mode .font-selector button.active {
+    background-color: #0a84ff; /* Brighter blue for dark mode */
+}
+
+
+
+
+.container{
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+
+/* Bottom right text */
+
+.text-block {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  backdrop-filter: blur(5px); /* Apply blur effect */
+  border-radius: 15px;
+}
+
+.gif-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 2px 7px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.7); /* black color with 70% opacity */
+    background-color: black;
+}
+
+.gif-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This ensures the image covers the container */
+}
+.gif-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This ensures the image covers the container */
+}
+
+
+/* Default (Light Mode) */
+/* Default (Light Mode) */
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(240, 240, 240, 0.9); /* Light background color inspired by iOS */
+    color: #333; /* Light text color */
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    backdrop-filter: blur(5px);
+    transition: background-color 0.2s ease-in-out ,color 0.5s ease-in-out;
+}
+
+/* Dark Mode */
+body.dark-mode .caption {
+    background-color: rgba(28, 28, 30, 0.9);
+    transition: background-color 0.2s ease-in-out ; ,color 0.5s ease-in-out;
+    /* Dark background color inspired by iOS dark mode */
+    color: #fff; /* Dark text color for dark mode */
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Subtle shadow for dark mode */
+}
+
+
+
+
+
+
+.caption-text{
+  opacity: 75%;
+  font-family: inter, poppins;
+}
+
+.imageinfo{
+  font-family: inter,poppins;
+  text-align: center;
+  margin-inline: 25px;
+  font-weight: 800;
+  opacity: 0.75;
+}
+
+
+
+.wrapper.three {
+    background-color: #010c3d;
+    border-radius: 15px;
+}
+.three h3 {
+    font-family: 'Ranchers', poppins ,sans-serif;
+    background: url(/media/oldhouse.jpg);
+    background-size: contain;
+    margin: auto;
+    text-align: center;
+    letter-spacing: 4px;
+    display: block;
+    font-size: 100px;
+    background-position: 0 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #5b728a54;
+    animation: animatedOne 10s linear infinite;
+}
+@keyframes animatedOne {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+
+.About{
+  margin-inline: 20px;
+}
+
+.OldWorld{
+  margin-inline: 20px;
+}
+
+.GroupPhoto{
+  margin-inline: 20px;
+}
+
+.Players{
+  margin-inline: 20px;
+}
+
+
+.paragraphs{text-align: justify;font-family: 'inter', poppins, vercetti;
+font-size: 18px;
+}
+body.serif-mode .paragraphs {
+    font-family: 'Source Serif 4', serif;
+    transition: font-family 0.5s ease;/* Serif font */
+}
+
+
+
+/* Light Mode */
+.headings {
+    font-family: 'poppins', poppins, Tahoma, Geneva, Verdana, sans-serif; /* Modern and clean font */
+    font-weight: 600; /* Bold weight for prominence */
+    color: #333; /* Dark color for light mode */
+    margin-inline: 1px; /* Inline margin */
+    text-transform: uppercase; /* Uppercase for a modern touch */
+    letter-spacing: 1.5px; /* Spaced-out letters */
+    border-bottom: 3px solid #007BFF; /* Bottom border for emphasis */
+    padding-bottom: 8px; /* Bottom padding */
+    transition: all 0.3s ease; /* Smooth transition for color changes */
+}
+
+/* Dark Mode */
+body.dark-mode .headings {
+    color: #ddd; /* Lighter color for dark mode */
+    border-bottom-color: #4FC3F7; /* Adjusted border color for dark mode */
+}
+
+/* Light Mode Styles */
+.DividerHeadings {
+    text-align: center;
+    padding: 4px;
+    background-color: lightgrey;
+    border-radius: 5px;
+    font-family: vercetti;
+    text-transform: uppercase;
+    font-weight: 300;
+    opacity: 90%;
+    border-radius: 0px;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Dark Mode Styles */
+body.dark-mode .DividerHeadings {
+    background-color: #333; /* Darker background for dark mode */
+    color: #fff; /* Light text color for better readability in dark mode */
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    /* Add any additional styling for dark mode as needed */
+}
+
+
+/* Base styling for redirect-button */
+.redirect-button {
+  display: block; /* Changed to block for full width */
+  width: 100%; /* Full width */
+  /* Vertical default, horizontal center */
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inter;
+  text-align: center;
+  text-decoration: none;
+  color: white; /* Default text color */
+  background-color: #007aff; /* Light background color */
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Styling for hover state */
+.redirect-button:hover {
+  background-color: #f0f0f0; /* iOS blue color on hover */
+  color: #ffffff;
+}
+
+/* Styling for focus state */
+.redirect-button:focus {
+  outline: none;
+  color: black;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.5); /* iOS-style focus border */
+}
+
+/* Styling for active state */
+.redirect-button:active {
+  background-color: #0056b3; /* Darker blue on click */
+}
+
+/* Styling for disabled state */
+.redirect-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Dark mode styling */
+body.dark-mode .redirect-button {
+  color: #ffffff; /* Light text color for dark mode */
+  background-color: #007aff; /* Darker background for dark mode */
+  border-color: #444444; /* Optional: if you have borders in dark mode */
+}
+
+
+
+
+
+
+
+
+#backToTopBtn{
+  position: fixed;
+  bottom: -80px; /* Initially hidden below the viewport */
+  left: 30px;
+  background-color: #FFDBC5; /* Crystalline blurring background */
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 10 0 0px rgba(0, 0, 0, 0.2); /* Shadow for depth effect */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: bottom 0.5s ease, background-color 0.5s ease, color 0.5s ease; /* Ease animation for appearing/disappearing */
+  z-index: 1000;
+}
+
+body.dark-mode #backToTopBtn{
+  background-color: #5B4130;
+  transition: bottom 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+}
+
+#backToTopBtn span {
+  font-size: 30px;
+  color: #27180A; /* Text color */
+  transition: color 0.5s ease;
+  z-index: 1000;
+}
+body.dark-mode #backToTopBtn span {
+    color: #FDDBC3; /* Adjust text color for dark mode */
+    transition: color 0.5s ease;
+}
+
+#backToTopBtn.visible {
+  bottom: 20px; /* Visible position */
+  z-index: 1000;
+}
+
+
+
+  
+  div[style*="text-align: right;position: fixed;z-index:9999999;bottom: 0;width: auto;right: 1%;cursor: pointer;line-height: 0;display:block !important;"] {
+    display: none !important;
+}
+
+img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+    display: none !important;
+}
+
+a[href*="https://www.000webhost.com/?utm_source=000webhostapp&utm_campaign=000_logo&utm_medium=website&utm_content=footer_img"] {
+    display: none !important;
+}
